@@ -25,10 +25,10 @@ Interruptor.handle(router)
 //Services
 // import User from 'services/User.service'
 
-// let a = User.get();
+// let a = User.find(366);
 
 // a.then(a => {
-// 	console.log(a)
+// 	console.log("users:", a)
 // })
 
 

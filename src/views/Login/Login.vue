@@ -2,19 +2,19 @@
     <div class="login-view fullscreen">
         <div class="page-container">
             <div class="form-container">
-                <form action="" method="POST">
+                <form @submit.prevent="authenticate" method="POST">
 
                     <div class="card" id="login-card">
                         <div class="card-content">
                             <h1>Login</h1>
 
                             <div class="floating-label">
-                                <input type="email" required class="full-width">
+                                <input type="email" required v-model="form.username" class="full-width">
                                 <label>E-mail</label>
                             </div>
 
                             <div class="floating-label">
-                                <input type="password" required class="full-width">
+                                <input type="password" required v-model="form.password" class="full-width">
                                 <label>Password</label>
                             </div>
 
@@ -39,16 +39,53 @@
 </template>
 
 <script>
+
+import OAuth from 'src/oauth'
+import router from 'src/router'
+import { Dialog } from 'quasar'
+
+let auth = new OAuth()
+
+
     export default {
       data () {
         return {
-          canGoBack: window.history.length > 1
+            checked : true,
+            form : {
+                username : null,
+                password : null,
+            }
         }
       },
       methods: {
+        async authenticate(){
+            console.log(this.form)
+            try {
+                let success = await auth.authenticate(this.form);
+                router.go('/')
+            }catch(error){
+                console.log("error: ", error)
+                Dialog.create({
+                  title: 'Error',
+                  message: 'Invalid credentials, try again.',
+                  buttons: [
+                    'Accept',
+                    {
+                      label: 'Aceptar',
+                      handler () {
+                        // empty the trash bin, yo
+                      }
+                    }
+                  ]
+                })
+            }
+        },
         goBack () {
           window.history.go(-1)
         }
+      },
+      mounted(){
+        //this.authenticate()
       }
     }
 

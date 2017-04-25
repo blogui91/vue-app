@@ -2,6 +2,7 @@ import Routes from '../api/Routes.js'
 import Env from '../api/env.js'
 import http from 'axios'
 import Lang from '../lang'
+import router from 'src/router'
 
 import {
 	LocalStorage
@@ -15,6 +16,11 @@ class OAuth {
 		}
 
 		this.error = null
+	}
+
+	logout() {
+		this.destroySession()
+		router.go('/login')
 	}
 
 	authenticate(credentials) {
@@ -86,7 +92,7 @@ class OAuth {
 		return LocalStorage.get.item('token_id') ? true : false;
 	}
 
-	destroy() {
+	destroySession() {
 		LocalStorage.remove('token_id');
 		LocalStorage.remove('refresh_token');
 		LocalStorage.remove('expires');

@@ -27,8 +27,8 @@
             </q-drawer-link>
             <hr>
             <div class="list-label">Layout Components</div>
-            <q-drawer-link icon="build" to="/showcase/layout/toolbar">
-                Toolbar
+            <q-drawer-link icon="build" @click="logout">
+                Log out
             </q-drawer-link>
             <q-drawer-link icon="tab" to="/showcase/layout/tabs">
                 Tabs
@@ -70,6 +70,9 @@ var moveForce = 30
 var rotateForce = 40
 
 import { Utils } from 'quasar'
+import OAuth from 'src/oauth'
+
+let Auth = new OAuth()
 
 export default {
   data () {
@@ -86,6 +89,9 @@ export default {
   methods: {
     getUser(){
         this.$store.dispatch('users/getCurrentUser', 56)
+    },
+    logout(){
+      Auth.logout()
     }
   },
   computed : {
