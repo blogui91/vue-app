@@ -12,7 +12,9 @@ import Quasar from 'quasar'
 import router from './router'
 
 //Vuex Init
-//import store from './store' //store/index.js 
+import {
+	store
+} from './store' //store/index.js
 
 import Bootstrap from './bootstrap'
 Bootstrap.installPlugins(Vue);
@@ -22,20 +24,10 @@ Bootstrap.checkAuth();
 import Interruptor from './interruptor'
 Interruptor.handle(router)
 
-//Services
-// import User from 'services/User.service'
-
-// let a = User.find(366);
-
-// a.then(a => {
-// 	console.log("users:", a)
-// })
-
-
 Quasar.start(() => {
 	/* eslint-disable no-new */
 	new Vue({
-		//store,
+		store,
 		el: '#q-app',
 		router,
 		render: h => h(require('./App'))

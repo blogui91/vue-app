@@ -4,22 +4,22 @@ import {
 } from 'api/env'
 
 
-class User extends Service {
+class Organization extends Service {
 	constructor() {
 		super()
 		this.config.origin = API_URL
 	}
 
 
-	static currentUser() {
-		let UserInstance = this.newInstance()
+	static make(data) {
+		let OrganizationInstance = this.newInstance()
 
-		let route = UserInstance.buildUrl('/user')
+		let route = OrganizationInstance.buildUrl('/make')
 
-		let user_promise = UserInstance.http.get(route)
+		let organization_promise = OrganizationInstance.http.post(route, data)
 
 		let request = (resolve, reject) => {
-			user_promise.then(response => {
+			organization_promise.then(response => {
 					resolve(response.data)
 				})
 				.catch(error => {
@@ -33,4 +33,4 @@ class User extends Service {
 	}
 }
 
-export default User
+export default Organization

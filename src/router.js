@@ -36,12 +36,25 @@ const router = new VueRouter({
 				requiresAuth: true,
 			}
 		}, {
+			path: '/users',
+			name: 'app.users',
+			component: load('Users/Users'),
+		}, {
+			path: '/organizations',
+			name: 'app.organizations',
+			component: load('Organizations/Organizations'),
+		}, {
 			path: '*',
 			component: load('Errors/Error404'),
 			meta: {
 				requiresAuth: true,
 			}
+		}, {
+			path: '/logout',
+			name: 'app.logout',
+			component: load('Logout/Logout'),
 		}
+
 
 	]
 });

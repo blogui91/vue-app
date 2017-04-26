@@ -1,5 +1,5 @@
 const state = {
-	users: {
+	organizations: {
 		data: [],
 		meta: {
 			pagination: {
@@ -11,7 +11,7 @@ const state = {
 			}
 		}
 	},
-	currentUser: null
+	organization: null
 }
 
 

@@ -6,20 +6,18 @@ const actions = {
 		state
 	}, payload) {
 
+		let users_promise = User.get();
 
-		let getUsers = () => {
-			let users_promise = User.get();
-
-			users_promise
-				.then(users => {
-					commit('users/setUsersList', users, {
-						root: true
-					})
+		users_promise
+			.then(users => {
+				commit('users/setUsersList', users, {
+					root: true
 				})
-				.catch(error => {
-					console.log("There was an error :c")
-				});
-		}
+			})
+			.catch(error => {
+				console.log("There was an error :c")
+			});
+
 
 	},
 	getUser({
@@ -28,23 +26,38 @@ const actions = {
 	}, payload) {
 
 
-		let getUsers = () => {
-			let users_promise = User.find(payload);
+		let users_promise = User.find(payload);
 
-			users_promise
-				.then(user => {
-					commit('users/setCurrentUser', user, {
-						root: true
-					})
+		users_promise
+			.then(user => {
+				commit('users/setCurrentUser', user, {
+					root: true
 				})
-				.catch(error => {
-					console.log("There was an error :c")
-				});
-		}
+			})
+			.catch(error => {
+				console.log("There was an error :c")
+			});
+	},
+	getCurrentUser({
+		commit,
+		state
+	}, payload) {
 
+		let user_promise = User.currentUser();
 
+		user_promise
+			.then(user => {
+				commit('users/setCurrentUser', user, {
+					root: true
+				})
+			})
+			.catch(error => {
+				console.log("There was an error :c")
+			});
 
 	}
+
+
 }
 
 

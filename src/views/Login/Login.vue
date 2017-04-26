@@ -1,5 +1,5 @@
 <template>
-    <div class="login-view fullscreen">
+    <div class="login-view">
         <div class="page-container">
             <div class="form-container">
                 <form @submit.prevent="authenticate" method="POST">
@@ -25,13 +25,13 @@
                                 </label>
 
                                 <div class="right-align">
+                                    <spinner color="#1290FD" :size="40" v-show="loader.is_loading"></spinner>
                                     <button class="primary big" type="submit">Iniciar</button>
                                 </div>
                             </div>
                         </div>
 
                     </div>
-                
                 </form>
             </div>
         </div>
@@ -45,12 +45,13 @@ import router from 'src/router'
 import { Dialog } from 'quasar'
 
 let auth = new OAuth()
-
-
     export default {
       data () {
         return {
             checked : true,
+            loader : {
+                is_loading : false
+            },
             form : {
                 username : null,
                 password : null,
@@ -61,15 +62,17 @@ let auth = new OAuth()
         async authenticate(){
             console.log(this.form)
             try {
+                this.loader.is_loading = true;
                 let success = await auth.authenticate(this.form);
+                this.loader.is_loading = false;
                 router.go('/')
             }catch(error){
                 console.log("error: ", error)
+                this.loader.is_loading = false;
                 Dialog.create({
                   title: 'Error',
                   message: 'Invalid credentials, try again.',
                   buttons: [
-                    'Accept',
                     {
                       label: 'Aceptar',
                       handler () {
