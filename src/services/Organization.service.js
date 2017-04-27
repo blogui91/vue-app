@@ -10,7 +10,6 @@ class Organization extends Service {
 		this.config.origin = API_URL
 	}
 
-
 	static make(data) {
 		let OrganizationInstance = this.newInstance()
 

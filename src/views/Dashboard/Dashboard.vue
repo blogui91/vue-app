@@ -1,9 +1,9 @@
 <template>
     <div class="page-container">
-        <h1>Dashboard</h1>
+        <h1>{{$t('dashboard.title')}}</h1>
         <div class="floating-label">
             <textarea required class="full-width"></textarea>
-            <label>Floating Label</label>
+            <label>Title</label>
         </div>
     </div>
 </template>
@@ -11,8 +11,9 @@
 <script>
 import { Utils } from 'quasar'
 import OAuth from 'src/oauth'
-
 let Auth = new OAuth()
+
+import {i18n} from './strings'
 
 export default {
   data () {
@@ -22,15 +23,11 @@ export default {
   },
   methods: {},
   computed : {
-    // user(){
-    //     return this.$store.users.user
-    // }
   },
   mounted () {
    
   },
-  beforeDestroy () {
-  }
+  i18n
 }
 </script>
 

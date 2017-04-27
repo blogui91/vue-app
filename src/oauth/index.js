@@ -1,7 +1,7 @@
-import Routes from '../api/Routes.js'
-import Env from '../api/env.js'
+import Routes from 'api/routes'
+import Env from 'api/env'
 import http from 'axios'
-import Lang from '../lang'
+import Lang from 'lang/global_strings'
 import router from 'src/router'
 
 import {
@@ -14,7 +14,6 @@ class OAuth {
 			user: null,
 			oauth_type: 'Bearer'
 		}
-
 		this.error = null
 	}
 
@@ -87,7 +86,6 @@ class OAuth {
 		this.error = reason;
 	}
 
-
 	isAuthenticated() {
 		return LocalStorage.get.item('token_id') ? true : false;
 	}
@@ -98,7 +96,6 @@ class OAuth {
 		LocalStorage.remove('expires');
 		LocalStorage.remove('binnacle.last_status');
 	}
-
 }
 
 export default OAuth
