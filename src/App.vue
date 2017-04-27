@@ -22,23 +22,22 @@
         </div>
 
         <div class="list no-border platform-delimiter">
-            <q-drawer-link icon="view_quilt" to="/showcase/layout" exact>
-                About Layout
+            <q-drawer-link icon="view_quilt" to="/" exact>
+                Binnacle
             </q-drawer-link>
             <hr>
             <div class="list-label">Layout Components</div>
+
+            <q-drawer-link icon="tab" :to="{'name' : 'app.organizations'}">
+                Organizations
+            </q-drawer-link>
+            <q-drawer-link icon="compare_arrows" :to="{ 'name' : 'app.users'}">
+                Users
+            </q-drawer-link>
+
             <q-drawer-link icon="exit_to_app" :to="{ name : 'app.logout', exact : true}">
                 Logout 
             </q-drawer-link>
-
-            <q-drawer-link icon="tab" to="/showcase/layout/tabs">
-                Tabs
-            </q-drawer-link>
-            <q-drawer-link icon="compare_arrows" to="/showcase/layout/drawer">
-                Layout Drawer
-            </q-drawer-link>
-
-            <a href=""></a>
         </div>
     </q-drawer>
 

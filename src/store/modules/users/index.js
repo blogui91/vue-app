@@ -3,7 +3,7 @@ import state from './state'
 import getters from './getters'
 import mutations from './mutations'
 
-const user_module = {
+let user_module = {
 	namespaced: true,
 	actions,
 	getters,
