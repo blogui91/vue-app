@@ -6,27 +6,27 @@
 
                     <div class="card" id="login-card">
                         <div class="card-content">
-                            <h1>Login</h1>
+                            <h1 v-text="$t('login.title')"></h1>
 
                             <div class="floating-label">
                                 <input type="email" required v-model="form.username" class="full-width">
-                                <label>E-mail</label>
+                                <label v-text="$t('login.email')"></label>
                             </div>
 
                             <div class="floating-label">
                                 <input type="password" required v-model="form.password" class="full-width">
-                                <label>Password</label>
+                                <label v-text="$t('login.password')"></label>
                             </div>
 
                             <div class="actions">
                                 <label class="remember-me">
                                     <q-checkbox v-model="checked"></q-checkbox>
-                                    Remember me
+                                    {{$t('login.rememberme')}}
                                 </label>
 
                                 <div class="right-align">
                                     <spinner color="#1290FD" :size="40" v-show="loader.is_loading"></spinner>
-                                    <button class="primary big" type="submit">Iniciar</button>
+                                    <button class="primary big" type="submit" v-text="$t('buttons.start')"></button>
                                 </div>
                             </div>
                         </div>
@@ -45,6 +45,8 @@ import router from 'src/router'
 import { Dialog } from 'quasar'
 
 let auth = new OAuth()
+import {i18n} from './strings'
+let trans
     export default {
       data () {
         return {
@@ -60,18 +62,18 @@ let auth = new OAuth()
       },
       methods: {
         async authenticate(){
-            console.log(this.form)
             try {
                 this.loader.is_loading = true;
                 let success = await auth.authenticate(this.form);
                 this.loader.is_loading = false;
                 router.go('/')
             }catch(error){
-                console.log("error: ", error)
+
                 this.loader.is_loading = false;
+
                 Dialog.create({
                   title: 'Error',
-                  message: 'Invalid credentials, try again.',
+                  message: this.$t('ERROR_RESPONSES.AUTH.UNAUTHORIZED'),
                   buttons: [
                     {
                       label: 'Aceptar',
@@ -88,8 +90,9 @@ let auth = new OAuth()
         }
       },
       mounted(){
-        //this.authenticate()
-      }
+        trans = this.$t
+      },
+      i18n
     }
 
 </script>

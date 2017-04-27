@@ -10,6 +10,9 @@ import './themes/app.scss'
 import Vue from 'vue'
 import Quasar from 'quasar'
 import router from './router'
+import {
+	i18n
+} from 'lang/index'
 
 //Vuex Init
 import {
@@ -26,10 +29,13 @@ Interruptor.handle(router)
 
 Quasar.start(() => {
 	/* eslint-disable no-new */
-	new Vue({
+	let app = new Vue({
 		store,
+		i18n,
 		el: '#q-app',
 		router,
+		mounted() {},
 		render: h => h(require('./App'))
 	})
+
 })

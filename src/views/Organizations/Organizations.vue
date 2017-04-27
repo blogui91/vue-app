@@ -1,7 +1,7 @@
 <template>
     <div class="layout-view" id="organization-view">
       <div class="page-container">
-        <h1>Organizations</h1>
+        <h1 v-text="$t('organizations.title')"></h1>
         <ul>
           <li v-for="organization in organizations_list">
             <img :src="organization.logo" alt="">
@@ -13,6 +13,9 @@
 </template>
 
 <script>
+import { i18n } from './strings.js'
+import { Dialog } from 'quasar'
+
 export default {
   data () {
     return {}
@@ -30,8 +33,8 @@ export default {
   created(){
     this.getOrganizations()
   },
-  mounted () { },
-  beforeDestroy () { }
+  mounted(){ },
+  i18n,
 }
 </script>
 
