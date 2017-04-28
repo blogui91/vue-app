@@ -1,36 +1,15 @@
-class UserModel {
+import BaseModel from './Basemodel'
+
+class UserModel extends BaseModel {
 	constructor() {
-		this.attributes = {
-			id: null,
-			first_name: null,
-			last_name: null
-		}
-	}
+		let props = [
+			'id',
+			'first_name',
+			'last_name'
+		];
 
-	set id(id) {
-		this.attributes.id = id
+		super(props)
 	}
-
-	get id() {
-		return this.attributes.id
-	}
-
-	set first_name(first_name) {
-		this.attributes.first_name = first_name
-	}
-
-	get first_name() {
-		return this.attributes.first_name
-	}
-
-	set last_name(last_name) {
-		this.attributes.last_name = last_name
-	}
-
-	get last_name() {
-		return this.attributes.last_name
-	}
-
 }
 
 
