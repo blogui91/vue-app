@@ -1,37 +1,15 @@
-function load(component) {
-    return () => System.import(`views/${component}.vue`)
-}
+import { RouteServiceProvider } from 'app/providers'
+import { user_routes } from 'routes/users.route'
+import { organization_routes } from 'routes/organizations.route'
+import { default_routes } from 'routes/default.route'
+// import { module_route } from 'routes/module.route'
 
-export let routes = [{
-        path: '/',
-        name: 'app.dashboard',
-        component: load('Dashboard/Dashboard'),
-        meta: {
-            requiresAuth: true
-        }
-    }, {
-        path: '/login',
-        name: 'app.login',
-        component: load('Login/Login'),
-        meta: {
-            requiresAuth: true
-        }
-    }, {
-        path: '/users',
-        name: 'app.users',
-        component: load('Users/Users')
-    }, {
-        path: '/organizations',
-        name: 'app.organizations',
-        component: load('Organizations/Organizations')
-    }, {
-        path: '*',
-        component: load('Errors/Error404'),
-        meta: {
-            requiresAuth: true
-        }
-    }, {
-        path: '/logout',
-        name: 'app.logout',
-        component: load('Logout/Logout')
-    }]
+const RouteProvider = new RouteServiceProvider();
+
+RouteProvider
+    .register(default_routes)
+    .register(user_routes)
+    .register(organization_routes)
+    .register([])//Register a new bounch of routes .
+
+export const routes = RouteProvider.routes
