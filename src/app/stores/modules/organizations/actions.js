@@ -1,4 +1,4 @@
-import Organization from 'src/services/Organization.service'
+import Organization from 'app/services/Organization.service'
 
 const actions = {
 	getOrganizations({

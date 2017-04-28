@@ -9,12 +9,6 @@
 </template>
 
 <script>
-import { Utils } from 'quasar'
-import OAuth from 'src/oauth'
-let Auth = new OAuth()
-
-import {i18n} from './strings'
-
 export default {
   data () {
     return {}

@@ -41,12 +41,11 @@
 <script>
 
 import OAuth from 'src/oauth'
-import router from 'src/router'
+import router from 'config/router'
 import { Dialog } from 'quasar'
 
 let auth = new OAuth()
 import {i18n} from './strings'
-let trans
     export default {
       data () {
         return {
@@ -90,7 +89,6 @@ let trans
         }
       },
       mounted(){
-        trans = this.$t
       },
       i18n
     }

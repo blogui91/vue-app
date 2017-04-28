@@ -1,4 +1,4 @@
-import OAuth from './oauth'
+import OAuth from 'src/oauth'
 import Quasar from 'quasar'
 
 export default {

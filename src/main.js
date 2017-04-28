@@ -1,30 +1,26 @@
 // === DEFAULT / CUSTOM STYLE ===
 // WARNING! always comment out ONE of the two require() calls below.
 // 1. use next line to activate CUSTOM STYLE (./src/themes)
-require(`./themes/app.${__THEME}.styl`)
+require(`config/themes/app.${__THEME}.styl`)
 	// 2. or, use next line to activate DEFAULT QUASAR STYLE
 	//require(`quasar/dist/quasar.${__THEME}.css`)
 	// ==============================
 
-import './themes/app.scss'
+import 'config/themes/app.scss'
 import Vue from 'vue'
 import Quasar from 'quasar'
-import router from './router'
-import {
-	i18n
-} from 'lang/index'
+import router from 'config/router'
+import { i18n } from 'resources/lang'
 
 //Vuex Init
-import {
-	store
-} from './store' //store/index.js
+import { store } from 'app/stores' //store/index.js
 
-import Bootstrap from './bootstrap'
+import Bootstrap from 'config/bootstrap'
 Bootstrap.installPlugins(Vue);
 Bootstrap.checkAuth();
 
 //Interruptor
-import Interruptor from './interruptor'
+import Interruptor from 'config/middleware'
 Interruptor.handle(router)
 
 Quasar.start(() => {

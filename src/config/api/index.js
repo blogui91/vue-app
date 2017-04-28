@@ -1,7 +1,7 @@
 import {
 	BASE_TOKEN,
 	API_URL,
-} from './env'
+} from 'config/env'
 
 
 export default {

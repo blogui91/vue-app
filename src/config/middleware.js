@@ -1,10 +1,6 @@
-import OAuth from './oauth'
+import OAuth from 'src/oauth'
 let oAuth = new OAuth();
-
-import {
-	store
-} from './store' //store/index.js
-
+import { store } from 'app/stores' //store/index.js
 
 export default {
 	handle(router) {

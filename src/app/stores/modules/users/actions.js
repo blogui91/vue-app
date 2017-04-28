@@ -1,4 +1,4 @@
-import User from 'src/services/User.service'
+import User from 'app/services/User.service'
 
 const actions = {
 	getUsers({

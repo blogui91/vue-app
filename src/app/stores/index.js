@@ -9,7 +9,6 @@ import users from './modules/users'
 import organizations from './modules/organizations'
 // --> Add new module
 
-
 export const store = new Vuex.Store({
 	modules: {
 		users,

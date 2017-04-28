@@ -3,11 +3,11 @@ import VueI18n from 'vue-i18n'
 import {
 	DEFAULT_LOCALE,
 	FALLBACK_LOCALE
-} from 'api/env'
+} from 'config/env'
 
 Vue.use(VueI18n)
 
-import messages from 'lang/global_strings'
+import messages from 'resources/lang/global_strings'
 
 let data = {
 	locale: DEFAULT_LOCALE,

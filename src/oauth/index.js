@@ -1,8 +1,8 @@
-import Routes from 'api/routes'
-import Env from 'api/env'
+import API from 'config/api'
+import Env from 'config/env'
 import http from 'axios'
-import Lang from 'lang/global_strings'
-import router from 'src/router'
+import Lang from 'resources/lang/global_strings'
+import router from 'config/router'
 
 import {
 	LocalStorage
@@ -27,7 +27,7 @@ class OAuth {
 		Object.assign(credentials, Env.oauth)
 		let request = (resolve, reject) => {
 
-			http.post(Routes.TOKEN_URL, credentials)
+			http.post(API.TOKEN_URL, credentials)
 				.then(response => {
 					self.clearErrors();
 					self.storeSession(response.data)

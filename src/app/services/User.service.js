@@ -1,7 +1,7 @@
 import Service from 'easy-requests'
 import {
 	API_URL
-} from 'api/env'
+} from 'config/env'
 
 
 class User extends Service {
