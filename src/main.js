@@ -19,9 +19,9 @@ import Bootstrap from 'config/bootstrap'
 Bootstrap.installPlugins(Vue);
 Bootstrap.checkAuth();
 
-//Interruptor
-import Interruptor from 'config/middleware'
-Interruptor.handle(router)
+//Middleware
+import Middleware from 'config/middleware'
+Middleware.handle(router)
 
 Quasar.start(() => {
 	/* eslint-disable no-new */
