@@ -9,6 +9,9 @@
 </template>
 
 <script>
+import {i18n} from './strings'
+
+
 export default {
   data () {
     return {}

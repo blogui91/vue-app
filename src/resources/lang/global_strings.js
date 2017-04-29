@@ -1,10 +1,9 @@
 export default {
 	es: {
-		ERROR_RESPONSES: {
-			AUTH: {
-				UNAUTHORIZED: "Usuario o contraseña inválidos",
-				SERVER_ERROR: "Error en el servidor, intente nuevamente"
-			},
+		error_responses: {
+			401: "Usuario o contraseña inválidos",
+			500: "Error en el servidor, intente nuevamente",
+			422 : "No pudimos realizar esta operación"
 		},
 		buttons: {
 			accept: "Aceptar",
@@ -18,11 +17,10 @@ export default {
 		}
 	},
 	en: {
-		ERROR_RESPONSES: {
-			AUTH: {
-				UNAUTHORIZED: "User or password invalid",
-				SERVER_ERROR: "Server error, try again!"
-			},
+		error_responses: {
+			401: "User or password invalid",
+			500: "Server error, try again!",
+			422 : "We could not do this operation"
 		},
 		buttons: {
 			accept: "Accept",

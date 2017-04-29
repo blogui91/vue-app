@@ -46,6 +46,10 @@ import { Dialog } from 'quasar'
 
 let auth = new OAuth()
 import {i18n} from './strings'
+
+
+import User from 'app/services/User.service'
+User.get()
     export default {
       data () {
         return {

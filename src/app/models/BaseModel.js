@@ -1,3 +1,4 @@
+import {isEmpty} from 'src/utils'
 class BaseModel
 {
     constructor(props = [], data = null){
@@ -34,7 +35,7 @@ class BaseModel
             }
             return;
         }else if(this.props.constructor == Object){
-            if(JSON.stringify(this.props) != '{}'){
+            if(isEmpty(this.props)){
                 let props = Object.keys(this.props)
                 props.forEach(prop => {
                     //Create setter and getter for the prop

@@ -19,9 +19,13 @@ import Bootstrap from 'config/bootstrap'
 Bootstrap.installPlugins(Vue);
 Bootstrap.checkAuth();
 
-//Middleware
+//Middlewares & inteceptor
+import AxiosServiceProvider from 'app/providers/AxiosServiceProvider'
 import Middleware from 'config/middleware'
 Middleware.handle(router)
+
+//
+import Err from 'app/providers/errors'
 
 Quasar.start(() => {
 	/* eslint-disable no-new */
@@ -30,8 +34,16 @@ Quasar.start(() => {
 		i18n,
 		el: '#q-app',
 		router,
-		mounted() {},
+		mounted() {
+
+			this.$nextTick(() => {
+				Err.constructor(this)
+				AxiosServiceProvider.handle()
+
+			})
+		},
 		render: h => h(require('./App'))
 	})
 
 })
+
