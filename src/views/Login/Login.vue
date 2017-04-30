@@ -47,9 +47,9 @@ import { Dialog } from 'quasar'
 let auth = new OAuth()
 import {i18n} from './strings'
 
-
 import User from 'app/services/User.service'
-User.get()
+
+window.User = User;
     export default {
       data () {
         return {
@@ -70,8 +70,8 @@ User.get()
                 let success = await auth.authenticate(this.form);
                 this.loader.is_loading = false;
                 router.go('/')
-            }catch(error){
 
+            }catch(error){
                 this.loader.is_loading = false;
 
                 Dialog.create({

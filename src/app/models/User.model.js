@@ -7,7 +7,6 @@ class UserModel extends BaseModel {
 			'first_name',
 			'last_name'
 		];
-
 		super(props)
 	}
 }

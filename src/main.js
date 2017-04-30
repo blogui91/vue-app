@@ -5,27 +5,27 @@ require(`config/themes/app.${__THEME}.styl`)
 	// 2. or, use next line to activate DEFAULT QUASAR STYLE
 	//require(`quasar/dist/quasar.${__THEME}.css`)
 	// ==============================
-
 import 'config/themes/app.scss'
+
 import Vue from 'vue'
-import Quasar from 'quasar'
-import router from 'config/router'
-import { i18n } from 'resources/lang'
 
 //Vuex Init
 import { store } from 'app/stores' //store/index.js
 
-import Bootstrap from 'config/bootstrap'
-Bootstrap.installPlugins(Vue);
-Bootstrap.checkAuth();
+//i18n provider
+import { i18n } from 'resources/lang'
 
-//Middlewares & inteceptor
-import AxiosServiceProvider from 'app/providers/AxiosServiceProvider'
-import Middleware from 'config/middleware'
-Middleware.handle(router)
+//Install ServiceProviders
+import Bootstrap from 'bootstrap'
+Vue.use(Bootstrap)
 
-//
-import Err from 'app/providers/errors'
+// Install Quasar Framework
+import Quasar from 'quasar'
+Vue.use(Quasar) 
+
+//Router provider
+import router from 'config/router'
+
 
 Quasar.start(() => {
 	/* eslint-disable no-new */
@@ -35,12 +35,7 @@ Quasar.start(() => {
 		el: '#q-app',
 		router,
 		mounted() {
-
-			this.$nextTick(() => {
-				Err.constructor(this)
-				AxiosServiceProvider.handle()
-
-			})
+			console.log("Vue App Initialized")
 		},
 		render: h => h(require('./App'))
 	})

@@ -17,8 +17,11 @@ class OAuth {
 		this.error = null
 	}
 
-	logout() {
-		this.destroySession()
+	static logout() {
+		LocalStorage.remove('token_id');
+		LocalStorage.remove('refresh_token');
+		LocalStorage.remove('expires');
+		LocalStorage.remove('binnacle.last_status');
 		router.go('/login')
 	}
 
@@ -53,16 +56,12 @@ class OAuth {
 		return this.attributes.oauth_type + " " + LocalStorage.get.item('token_id')
 	}
 
+	createInstance(){
+		return new OAuth()
+	}
+
 	addAuthHeaders() {
 		http.defaults.headers.common['Authorization'] = this.getAuthHeader();
-	}
-
-	getError() {
-		return this.error
-	}
-
-	clearErrors() {
-		this.errors = null
 	}
 
 	handleError(error) {

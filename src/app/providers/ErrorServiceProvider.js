@@ -25,20 +25,21 @@ class ErrorServiceProvider {
       }
     }
 
-    this.services = {
-        toast : Toast
-    }
 
-    if(!this.attributes.Vue){
-        this.attributes.Vue = Vue;
+    if(!this.attributes.Vue && Vue){
+        if(Vue.constructor.name == 'VueComponent' || Vue.constructor.name == 'Vue$2'){
+          this.attributes.Vue = Vue;
+        }else{
+          throw "You must send an instance type VueComponent, but we received: "+Vue.constructor.name
+        }
     }
   }
 
   handle(status) {
-    this[status]();
+    this["error"+status]();
   }
 
-  401() {
+  error401() {
     let html = 'Unauthorized'
     let icon = 'account_box'
     if (this.attributes.Vue) {
@@ -51,7 +52,9 @@ class ErrorServiceProvider {
         icon
     }
     this.showToast(default_values);
-    OAuth.logout()
+    setTimeout(() =>{
+      OAuth.logout()
+    },1000)
   }
 
   showToast(properties) {
@@ -59,7 +62,7 @@ class ErrorServiceProvider {
     Toast.create(this.attributes.toastProperties)
   }
 
-  500() {
+  error500() {
     let html = 'Server error'
     let icon = 'computer'
 
@@ -81,5 +84,3 @@ class ErrorServiceProvider {
 }
 
 export default ErrorServiceProvider
-
-

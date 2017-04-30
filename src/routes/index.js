@@ -1,4 +1,4 @@
-import { RouteServiceProvider } from 'app/providers'
+import { RouteServiceProvider } from 'app/providers/RouteServiceProvider'
 import { user_routes } from 'routes/users.route'
 import { organization_routes } from 'routes/organizations.route'
 import { default_routes } from 'routes/default.route'
