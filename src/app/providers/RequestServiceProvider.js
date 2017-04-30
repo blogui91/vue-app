@@ -1,6 +1,7 @@
 import Axios from 'axios'
 import ErrorServiceProvider from './ErrorServiceProvider'
 import {BASE_TOKEN, API_URL} from 'config/env'
+
 let ErrorHandler = new ErrorServiceProvider()
 
 /*
@@ -24,7 +25,7 @@ export default {
             if(routeExceptions.indexOf(url) < 0){
                 ErrorHandler.handle(error.response)
             }
-            
+
             return Promise.reject(error);
         });
     }

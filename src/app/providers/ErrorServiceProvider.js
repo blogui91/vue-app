@@ -2,13 +2,9 @@ import {
   Toast
 } from 'quasar'
 
-
 import OAuth from 'src/oauth'
 
 //Create bag to store error and be able to share them in a component
-import Vue from 'vue'
-Vue.prototype.$bagErrors = null
-
 let VueService
 
 class ErrorServiceProvider {
@@ -22,9 +18,9 @@ class ErrorServiceProvider {
         bgColor: '#EC263E',
         button: {
           //label: 'Undo',
-          //handler() {
+          handler() {
             // Specify what to do when button is clicked/tapped
-          //},
+          },
           color: '#ddd'
         }
       }
@@ -42,11 +38,7 @@ class ErrorServiceProvider {
 
   handle(error) {
     let status = error.status
-
-    console.log("tran",VueService)
-
     VueService.$bagErrors = error.data;
-
     this["error"+status]();
   }
 
@@ -63,7 +55,7 @@ class ErrorServiceProvider {
     }
     this.showToast(default_values);
     setTimeout(() =>{
-      //OAuth.logout()
+      OAuth.logout()
     },1000)
   }
 
@@ -92,7 +84,6 @@ class ErrorServiceProvider {
     let html = 'Resource not found'
     let icon = 'error'
 
-    console.log(this.attributes)
     if (VueService) {
       html = VueService.$t('error_responses.404')
     }
