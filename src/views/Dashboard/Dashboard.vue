@@ -10,7 +10,8 @@
 
 <script>
 import {i18n} from './strings'
-
+import User from 'app/services/User.service'
+window.User = User;
 
 export default {
   data () {

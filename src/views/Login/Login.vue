@@ -49,6 +49,7 @@ import {i18n} from './strings'
 
 import User from 'app/services/User.service'
 
+//User.get()
 window.User = User;
     export default {
       data () {
@@ -73,7 +74,7 @@ window.User = User;
 
             }catch(error){
                 this.loader.is_loading = false;
-
+                console.log(error.response)
                 Dialog.create({
                   title: 'Error',
                   message: this.$t('ERROR_RESPONSES.AUTH.UNAUTHORIZED'),

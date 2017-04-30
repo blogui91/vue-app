@@ -7,7 +7,7 @@ export const BASE_URL = {
 	"temp": 'https://api-tmp.demo.binnacle.mx/'
 };
 
-export const DEFAULT_LOCALE = 'es';
+export const DEFAULT_LOCALE = 'en';
 export const FALLBACK_LOCALE = 'en';
 export const API_URL = BASE_URL[STATUS] + 'api/';
 export const BASE_TOKEN = BASE_URL[STATUS];

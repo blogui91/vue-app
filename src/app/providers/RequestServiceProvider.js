@@ -11,24 +11,20 @@ let ErrorHandler = new ErrorServiceProvider()
 */
 let routeExceptions = [
     BASE_TOKEN+"oauth/access_token"
-
 ];
 
 export default {
     handle(){
         Axios.interceptors.response.use( response => {
-
-            console.log("response", response);
             return response
         }, error => {
             //Common errors
-            let status = error.response.status
             let url = error.response.config.url;
 
-            if(routeExceptions.indexOf(url) == 0){
-                ErrorHandler.handle(status)
+            if(routeExceptions.indexOf(url) < 0){
+                ErrorHandler.handle(error.response)
             }
-
+            
             return Promise.reject(error);
         });
     }

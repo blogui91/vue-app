@@ -5,10 +5,15 @@ import {
 
 import OAuth from 'src/oauth'
 
+//Create bag to store error and be able to share them in a component
+import Vue from 'vue'
+Vue.prototype.$bagErrors = null
+
+let VueService
+
 class ErrorServiceProvider {
   constructor(Vue) {
     this.attributes = {
-      Vue: null,
       toastProperties: {
         html: 'default message',
         icon: 'alarm_add',
@@ -26,26 +31,31 @@ class ErrorServiceProvider {
     }
 
 
-    if(!this.attributes.Vue && Vue){
+    if(!VueService && Vue){
         if(Vue.constructor.name == 'VueComponent' || Vue.constructor.name == 'Vue$2'){
-          this.attributes.Vue = Vue;
+          VueService = Vue;
         }else{
           throw "You must send an instance type VueComponent, but we received: "+Vue.constructor.name
         }
     }
   }
 
-  handle(status) {
+  handle(error) {
+    let status = error.status
+
+    console.log("tran",VueService)
+
+    VueService.$bagErrors = error.data;
+
     this["error"+status]();
   }
 
   error401() {
     let html = 'Unauthorized'
     let icon = 'account_box'
-    if (this.attributes.Vue) {
-      html = this.attributes.Vue.$t('error_responses.401')
+    if (VueService.$t('error_responses.401')){
+      html = VueService.$t('error_responses.404')
     }
-
 
     let default_values = {
         html,
@@ -53,7 +63,7 @@ class ErrorServiceProvider {
     }
     this.showToast(default_values);
     setTimeout(() =>{
-      OAuth.logout()
+      //OAuth.logout()
     },1000)
   }
 
@@ -66,8 +76,25 @@ class ErrorServiceProvider {
     let html = 'Server error'
     let icon = 'computer'
 
-    if (this.attributes.Vue) {
-      html = this.attributes.Vue.$t('error_responses.500')
+    if (VueService) {
+      html = VueService.$t('error_responses.500')
+    }
+
+    let default_values = {
+        html,
+        icon 
+    }
+
+    this.showToast(default_values)
+  }
+
+  error404(){ //Not found
+    let html = 'Resource not found'
+    let icon = 'error'
+
+    console.log(this.attributes)
+    if (VueService) {
+      html = VueService.$t('error_responses.404')
     }
 
     let default_values = {

@@ -32,13 +32,11 @@ class OAuth {
 
 			http.post(API.TOKEN_URL, credentials)
 				.then(response => {
-					self.clearErrors();
 					self.storeSession(response.data)
 					resolve(response.data)
 				})
 				.catch(error => {
 					console.log("There was an error creating the session:", error)
-					self.handleError(error)
 					reject(error)
 				});
 		};
@@ -62,27 +60,6 @@ class OAuth {
 
 	addAuthHeaders() {
 		http.defaults.headers.common['Authorization'] = this.getAuthHeader();
-	}
-
-	handleError(error) {
-		let reason = {
-			code: error.status,
-			description: ""
-		}
-
-		switch (error.status) {
-			case 401:
-				reason.description = Lang.ERROR_RESPONSES.AUTH.UNAUTHORIZED
-				break
-			case 500:
-				reason.description = Lang.ERROR_RESPONSES.AUTH.SERVER_ERROR
-				break
-			default:
-				reason.description = error.status
-				break
-		}
-
-		this.error = reason;
 	}
 
 	isAuthenticated() {

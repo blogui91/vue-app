@@ -26,7 +26,6 @@ Vue.use(Quasar)
 //Router provider
 import router from 'config/router'
 
-
 Quasar.start(() => {
 	/* eslint-disable no-new */
 	let app = new Vue({

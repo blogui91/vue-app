@@ -10,7 +10,6 @@ class User extends Service {
 		this.config.origin = API_URL
 	}
 
-
 	static currentUser() {
 		let UserInstance = this.newInstance()
 
@@ -28,9 +27,8 @@ class User extends Service {
 		}
 
 		return new Promise(request)
-
-
 	}
+
 }
 
 export default User

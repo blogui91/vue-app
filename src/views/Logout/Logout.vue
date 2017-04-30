@@ -5,7 +5,6 @@
 <script>
 
 	import OAuth from 'oauth'
-	let Auth = new OAuth()
   export default {
     data() {
       return{
@@ -16,7 +15,7 @@
      
     },
     beforeCreate(){
-   		Auth.logout();
+   		OAuth.logout();
    		console.log("Logging out")
     },
     watch: {
