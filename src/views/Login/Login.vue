@@ -3,7 +3,6 @@
         <div class="page-container">
             <div class="form-container">
                 <form @submit.prevent="authenticate" method="POST">
-
                     <div class="card" id="login-card">
                         <div class="card-content">
                             <h1 v-text="$t('login.title')"></h1>
@@ -47,10 +46,6 @@ import { Dialog } from 'quasar'
 let auth = new OAuth()
 import {i18n} from './strings'
 
-import User from 'app/services/User.service'
-
-//User.get()
-window.User = User;
     export default {
       data () {
         return {

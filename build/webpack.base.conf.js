@@ -26,7 +26,7 @@ module.exports = {
     chunkFilename: 'js/[id].[chunkhash].js'
   },
   resolve: {
-    extensions: ['.js', '.vue', '.json'],
+    extensions: ['.js', '.vue', '.json','.ts'],
     modules: [
       resolve('src'),
       resolve('node_modules')
@@ -81,8 +81,12 @@ module.exports = {
           limit: 10000,
           name: 'fonts/[name].[hash:7].[ext]'
         }
+      },{
+          test: /\.ts$/,
+          loader: 'ts-loader?allowJsEntry=true'
       }
     ]
+    
   },
   plugins: [
     /*

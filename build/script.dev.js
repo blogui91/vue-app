@@ -14,6 +14,7 @@ var
   app = express(),
   port = process.env.PORT || config.dev.port,
   uri = 'http://localhost:' + port
+  vueAutoinstall = require('./components.autoinstall')
 
 console.log(' Starting dev server with "' + (process.argv[2] || env.platform.theme).bold + '" theme...')
 console.log(' Will listen at ' + uri.bold)
@@ -67,6 +68,8 @@ app.use(hotMiddleware)
 // serve pure static assets
 var staticsPath = path.posix.join(webpackConfig.output.publicPath, 'statics/')
 app.use(staticsPath, express.static('./src/statics'))
+
+
 
 // try to serve Cordova statics for Play App
 app.use(express.static(env.platform.cordovaAssets))

@@ -1,4 +1,5 @@
-import BaseModel from './Basemodel'
+import BaseModel from './BaseModel'
+import User from 'app/services/User.service'
 
 class UserModel extends BaseModel {
 	constructor() {
@@ -8,6 +9,7 @@ class UserModel extends BaseModel {
 			'last_name'
 		];
 		super(props)
+		//this.loadService(User)
 	}
 }
 

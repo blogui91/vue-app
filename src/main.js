@@ -26,6 +26,12 @@ Vue.use(Quasar)
 //Router provider
 import router from 'config/router'
 
+import User from 'app/models/User.model'
+
+window.User = User
+
+import MyComponent from 'components/my-component'
+
 Quasar.start(() => {
 	/* eslint-disable no-new */
 	let app = new Vue({
@@ -33,6 +39,9 @@ Quasar.start(() => {
 		i18n,
 		el: '#q-app',
 		router,
+		components : {
+
+		},
 		mounted() {
 			console.log("Vue App Initialized")
 		},

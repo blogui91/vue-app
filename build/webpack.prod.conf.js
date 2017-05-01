@@ -20,6 +20,7 @@ var webpackConfig = merge(baseWebpackConfig, {
   plugins: [
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: config.build.productionSourceMap,
+      mangle : false,
       minimize: true,
       compress: {
         warnings: false

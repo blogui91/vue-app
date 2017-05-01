@@ -10,6 +10,8 @@ module.exports = {
     views: path.resolve(__dirname, '../src/views'),
     config: path.resolve(__dirname, '../src/config'),
     routes: path.resolve(__dirname, '../src/routes'),
+    components: path.resolve(__dirname, '../src/components'),
+    
   },
 
   // Progress Bar Webpack plugin format

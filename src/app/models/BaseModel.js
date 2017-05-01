@@ -1,11 +1,70 @@
 import {isEmpty} from 'src/utils'
-class BaseModel
+
+class MixinService 
+{
+    loadService(Service){
+        this.service = Service
+    }
+
+    save(){
+
+        if(!this.service){
+            throw "You must load a service in your model."
+        }
+
+        let request = (resolve, reject) => {
+            this.service.create(this.attributes).then(response =>{
+                resolve(response)
+            }).catch(error=>{
+                reject(error)
+            })
+        }
+
+        return new Promise(request)
+    }
+
+    delete(){
+        if(!this.service){
+            throw "You must load a service in your model."
+        }
+
+        let request = (resolve, reject) => {
+            this.service.delete(this.attributes.id).then(response =>{
+                resolve(response)
+            }).catch(error=>{
+                reject(error)
+            })
+        }
+
+        return new Promise(request)
+    }
+
+    update(){
+        if(!this.service){
+            throw "You must load a service in your model."
+        }
+
+        let request = (resolve, reject) => {
+            this.service.create(this.attributes.id, this.attributes).then(response =>{
+                resolve(response)
+            }).catch(error=>{
+                reject(error)
+            })
+        }
+
+        return new Promise(request)
+    }
+}
+
+class BaseModel extends MixinService
 {
     constructor(props = [], data = null){
+        super()
         this.props = props
         this.attributes = {}
         this.run(data);
     }
+
 
     notify()
     {

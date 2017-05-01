@@ -1,4 +1,4 @@
-import BaseModel from './Basemodel'
+import BaseModel from './BaseModel'
 import UserModel from './User.model'
 
 export class Organization extends BaseModel

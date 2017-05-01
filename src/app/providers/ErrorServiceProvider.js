@@ -28,17 +28,12 @@ class ErrorServiceProvider {
 
 
     if(!VueService && Vue){
-        if(Vue.constructor.name == 'VueComponent' || Vue.constructor.name == 'Vue$2'){
           VueService = Vue;
-        }else{
-          throw "You must send an instance type VueComponent, but we received: "+Vue.constructor.name
-        }
     }
   }
 
   handle(error) {
     let status = error.status
-    VueService.$bagErrors = error.data;
     this["error"+status]();
   }
 
@@ -55,7 +50,9 @@ class ErrorServiceProvider {
     }
     this.showToast(default_values);
     setTimeout(() =>{
+      console.log("logging out")
       OAuth.logout()
+
     },1000)
   }
 

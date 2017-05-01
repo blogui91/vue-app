@@ -1,10 +1,11 @@
-const STATUS = "temp";
+const STATUS = "example";
 
 export const BASE_URL = {
 	"production": 'https://api.binnacle.mx/',
 	"local": 'http://localhost:8000/',
 	"dev": 'https://api.demo.binnacle.mx/',
-	"temp": 'https://api-tmp.demo.binnacle.mx/'
+	"temp": 'https://api-tmp.demo.binnacle.mx/',
+	"example" : "https://jsonplaceholder.typicode.com/"
 };
 
 export const DEFAULT_LOCALE = 'en';
