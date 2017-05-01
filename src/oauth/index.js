@@ -1,8 +1,7 @@
 import API from 'config/api'
 import Env from 'config/env'
 import http from 'axios'
-import Lang from 'resources/lang/global_strings'
-import router from 'config/router'
+import router from 'app/providers/RouterServiceProvider'
 
 import {
 	LocalStorage

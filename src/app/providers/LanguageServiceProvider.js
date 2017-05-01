@@ -7,7 +7,7 @@ import {
 
 Vue.use(VueI18n)
 
-import messages from 'resources/lang/global_strings'
+import messages from 'resources/lang/strings'
 
 let data = {
 	locale: DEFAULT_LOCALE,

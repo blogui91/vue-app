@@ -3,7 +3,6 @@ import ErrorServiceProvider from './ErrorServiceProvider'
 import {BASE_TOKEN, API_URL} from 'config/env'
 
 let ErrorHandler = new ErrorServiceProvider()
-
 /*
 * Exceptions where we dont need to use the ErrorHandler
 * When one response returns an error 401, ErrorHandler redirects to login automatically, however

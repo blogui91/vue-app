@@ -1,13 +1,13 @@
 import Service from 'easy-requests'
 import {
-	BASE_TOKEN
+	API_URL
 } from 'config/env'
 
 
 class User extends Service {
 	constructor() {
 		super()
-		this.config.origin = BASE_TOKEN
+		this.config.origin = API_URL
 	}
 
 	static currentUser() {

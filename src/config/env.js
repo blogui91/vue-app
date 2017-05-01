@@ -8,7 +8,7 @@ export const BASE_URL = {
 	"example" : "https://jsonplaceholder.typicode.com/"
 };
 
-export const DEFAULT_LOCALE = 'en';
+export const DEFAULT_LOCALE = 'es';
 export const FALLBACK_LOCALE = 'en';
 export const API_URL = BASE_URL[STATUS] + 'api/';
 export const BASE_TOKEN = BASE_URL[STATUS];

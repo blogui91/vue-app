@@ -15,6 +15,7 @@
 <script>
 import { i18n } from './strings.js'
 import { Dialog } from 'quasar'
+import { mapState, } from 'vuex'
 
 export default {
   data () {
@@ -28,7 +29,7 @@ export default {
   methods: {
     getOrganizations(){
       this.$store.dispatch('organizations/getOrganizations')
-    }
+    },
   },
   created(){
     this.getOrganizations()

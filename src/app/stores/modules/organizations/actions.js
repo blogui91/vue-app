@@ -10,6 +10,7 @@ const actions = {
 
 		users_promise
 			.then(users => {
+
 				commit('organizations/setOrganizationsList', users, {
 					root: true
 				})

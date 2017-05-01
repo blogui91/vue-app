@@ -40,7 +40,7 @@
 <script>
 
 import OAuth from 'src/oauth'
-import router from 'config/router'
+import router from 'app/providers/RouterServiceProvider'
 import { Dialog } from 'quasar'
 
 let auth = new OAuth()

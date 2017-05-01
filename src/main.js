@@ -3,7 +3,7 @@
 // 1. use next line to activate CUSTOM STYLE (./src/themes)
 require(`config/themes/app.${__THEME}.styl`)
 	// 2. or, use next line to activate DEFAULT QUASAR STYLE
-	//require(`quasar/dist/quasar.${__THEME}.css`)
+//require(`quasar/dist/quasar.${__THEME}.css`)
 	// ==============================
 import 'config/themes/app.scss'
 
@@ -13,7 +13,10 @@ import Vue from 'vue'
 import { store } from 'app/stores' //store/index.js
 
 //i18n provider
-import { i18n } from 'resources/lang'
+import { i18n } from 'app/providers/LanguageServiceProvider'
+
+//Router provider
+import router from 'app/providers/RouterServiceProvider'
 
 //Install ServiceProviders
 import Bootstrap from 'bootstrap'
@@ -23,14 +26,6 @@ Vue.use(Bootstrap)
 import Quasar from 'quasar'
 Vue.use(Quasar) 
 
-//Router provider
-import router from 'config/router'
-
-import User from 'app/models/User.model'
-
-window.User = User
-
-import MyComponent from 'components/my-component'
 
 Quasar.start(() => {
 	/* eslint-disable no-new */
