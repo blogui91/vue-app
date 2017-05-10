@@ -7,6 +7,11 @@ require(`config/themes/app.${__THEME}.styl`)
 	// ==============================
 import 'config/themes/app.scss'
 
+
+import {Storable} from 'app/indexedDB/Storable'
+console.log(Storable)
+window.Storable = Storable;
+
 import Vue from 'vue'
 
 //Vuex Init

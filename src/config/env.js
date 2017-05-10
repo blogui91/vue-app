@@ -13,6 +13,8 @@ export const FALLBACK_LOCALE = 'en';
 export const API_URL = BASE_URL[STATUS] + 'api/';
 export const BASE_TOKEN = BASE_URL[STATUS];
 
+export const INDEXEDDB_NAME = 'myApp';
+
 export default {
 	oauth: {
 		grant_type: 'password',
